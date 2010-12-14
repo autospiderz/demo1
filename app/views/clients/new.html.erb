@@ -1,0 +1,46 @@
+<html><head><%= javascript_include_tag :defaults %></head>
+<body>
+<a href="/clients/new">main control panel</a>
+<br><br>
+<table border=1>
+<tr><td>
+<%= form_for(@client) do |f| %>
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add Client" %>
+  </div>
+<% end %>
+</td><td valign=top>
+   <form name="sform" action="/list" style="display:inline;">
+      <label for="item_name">First Name Lookup : </label>
+      <input type=text name=fname value=<%= @fname %>>
+      <input type=submit value="look">
+   </form>
+</td></tr>
+<tr><td colspan=2>
+# of clients = <%= @total %><br>
+<% if !@total.nil? and @total>0 then %><table border=1>
+<tr><td><u>first_name</u></td><td><u>last_name</u></td><td><u>address</u></td><td><u>phone_number</u></td><td><u>email</u></td></tr>
+  <% @client2.each do |u| %>  
+    <tr><td><%= u.first_name rescue nil %></td><td><%= u.last_name rescue nil %></td><td><%= u.address rescue nil %></td><td><%= u.phone_number rescue nil %></td><td><%= u.email rescue nil %></td><td><table><tr><form action=/edit method=get><input type=hidden name=first_name value=<%= u.first_name rescue nil %>><input type=hidden name=last_name value=<%= u.last_name rescue nil %>><input type=hidden name=address value=<%= u.address rescue nil %>><input type=hidden name=phone_number value=<%= u.phone_number rescue nil %>><input type=hidden name=email value=<%= u.email rescue nil %>><input type=hidden name=ID value=<%= u.id rescue nil %>><td><input type=submit value="edit"></td></form><form action=/destroy method=get><input type=hidden name=ID value=<%= u.id rescue nil %>><td><input type=submit value="delete client"></td></form></tr></table></td>
+  <% end %>
+</table>
+<% end %>
+
+</td></tr></table>
+</body></html>

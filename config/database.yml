@@ -1,0 +1,13 @@
+development:
+ adapter: mysql
+ database: practice1
+ username: root
+ password: anything
+ host: localhost
+ 
+test:
+ adapter: mysql
+ database: practice1
+ username: root
+ password: anything
+ host: localhost

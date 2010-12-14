@@ -1,0 +1,21 @@
+<a href="/clients/new">main control panel</a>--><b>Client Search</b>
+<br><br>
+
+<form name="sform" action="list" style="display:inline;">
+  <label for="item_name">Search for first names : </label>
+  <input type=text name=fname value=<%= @fname %>>
+  <input type=submit value="look">
+</form>
+
+<br><br>
+# of clients = <%= @total %><br>
+
+<% if @total>0 %><table border=1>
+<tr><td>first_name</td><td>last_name</td><td>address</td><td>phone_number</td><td>email</td></tr>
+    <% @client.each do |u| %>  
+      <tr><td><%= u.first_name rescue nil %></td><td><%= u.last_name rescue nil %></td><td><%= u.address rescue nil %></td><td><%= u.phone_number rescue nil %></td><td><%= u.email rescue nil %></td></tr>
+    <% end %>
+  </table>
+<% end %>
+
+

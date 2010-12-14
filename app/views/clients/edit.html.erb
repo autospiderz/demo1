@@ -1,0 +1,31 @@
+<a href="/clients/new">main control panel</a>-->Submit Edits
+<br><br>
+<table border=1>
+<tr><td>
+<form action=/edit method=get>
+  <div class="field">
+    First Name<br />
+    <input id="first_name" name="first_name" size="30" type="text" value="<%= @client.first_name rescue nil %>"/>
+  </div>
+  <div class="field">
+    Last Name<br />
+    <input id="last_name" name="last_name" size="30" type="text" value="<%= @client.last_name rescue nil %>"/>
+  </div>
+  <div class="field">
+    Address<br />
+    <input id="address" name="address" size="30" type="text" value="<%= @client.address rescue nil %>"/>
+  </div>
+  <div class="field">
+    Phone Number<br />
+    <input id="phone_number" name="phone_number" size="30" type="text" value="<%= @client.phone_number rescue nil %>"/>
+  </div>
+  <div class="field">
+    Email<br />
+    <input id="email" name="email" size="30" type="text" value="<%= @client.email rescue nil %>"/>
+  </div>
+
+  <div class="actions">
+    <input type=hidden name=ID value=<%= @client.id rescue nil %>>
+	    <input type=hidden name=id value=<%= @client.id rescue nil %>>
+    <input type=submit value="save edits">
+  </div>
